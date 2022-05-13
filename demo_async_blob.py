@@ -14,7 +14,7 @@ print("random data ready...")
 async def upload_blob(idx: int, threshold: int = 6) -> int:
     print(f"Initiated upload_blob({idx}).")
     # Upload content to block blob
-    sas_url = f"https://azhopwcp6hesz.blob.core.windows.net/async-upload/blob_{idx}?sp=racwdli&st=2022-05-13T10:33:17Z&se=2022-05-31T18:33:17Z&spr=https&sv=2020-08-04&sr=c&sig=q0sw636ZieYPYXcxthmJpApmm5mFgUE%2FjxXMXjii%2B%2FI%3D"
+    sas_url = f"https://azhopwcp6hesz.blob.core.windows.net/async-upload/blob_{idx}?{sas_key}"
     async with BlobClient.from_blob_url(sas_url) as blob_client:
       await blob_client.upload_blob(data, blob_type="BlockBlob")
     print(f"---> Finished: upload_blob({idx})")
